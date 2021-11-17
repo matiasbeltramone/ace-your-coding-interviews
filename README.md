@@ -1,2 +1,5 @@
-# ace-coding-interviews
-Cracking the coding interview
+# Coding Interviews
+
+El objetivo de este repositorio es intentar ayudar a los programadores en ciertos temas que son dados en procesos de entrevistas los programadores sabemos que lo relacionado a ciencias de la computación como pueden ser **Algoritmos y Estructuras de Datos**, estos temas suelen evaluarse en vivo llegando a ser un verdadero dolor de cabeza si no se tiene clara las bases y la **práctica** necesaria, en mi caso al igual que muchos otros me encuentro incursionando y estudiando el tema de entrevistas técnicas en general, soy estudiante activo de los temas por lo tanto quiero tratar de ir dejando posts en `matiasbeltramone.com.ar` y sus respectivos archivos markdown en este repositorio para los diferentes algoritmos y estructuras de datos más utilizados en la industria.
+
+Creo que es importante destacar que trato de reunir información en base a los libros que voy leyendo, cursos y páginas que voy visitando y estudiando a lo largo de mi carrera profesional, estoy bastante lejos de declararme algún tipo de experto en este o cualquier otro tema. Para los que quieran unirse en esta odisea bienvenidos sean, se que hay mucho material dando vuelta pero normalmente todo esta en inglés y por experiencia propia se que muchos que estan comenzando y otros que ya estan en la industria no siempre les resulta fácil poder leer e investigar todo en inglés.
