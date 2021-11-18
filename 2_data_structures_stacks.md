@@ -1,4 +1,4 @@
-# Stacks (Pilas)
+# Pilas (Stacks)
 
 Una pila es una estructura de datos del tipo "último en entrar, primero en salir" (suelen llamarse estructuras LIFO), lo que significa que el elemento más nuevo (o el elemento que se agregó en último lugar)
 en la pila será el primero que se elimine de la estructura. Podemos pensar en una pila como una pila de libros. Para llegar al tercer libro de la pila,
@@ -6,13 +6,13 @@ tenemos que quitar el quinto libro y luego el cuarto libro, algunos se pasarán 
 
 <p align="center"><img width="50%" src="https://user-images.githubusercontent.com/22304957/111905554-fcd4dc00-8a2a-11eb-8d25-6899a64fe225.png"/></p>
 
-## Ventajas de las Pilas
+## Ventajas
 
 Las pilas permiten agregar y quitar en tiempo constante el elemento superior de la estructura. El tiempo constante, llamado **O(1)**, es un tiempo de ejecución muy eficaz
 (ya hablamos de la notación Big-O y el tiempo de ejecución en otro post podes verlo por acá: <a>https://matiasbeltramone.github.io/algorithmic-complexity/</a>).
 Estas acciones son de tiempo constante porque no necesitamos mover ningún elemento para sacar el elemento superior de la pila.
 
-## Desventajas de las Pilas
+## Desventajas
 
 Las pilas, desafortunadamente, no ofrecen acceso en tiempo constante al enésimo elemento de la pila, a diferencia de una matriz (array).
 Entonces, si queremos acceder al tercer libro, tendríamos que sacar cada elemento de nuestra pila hasta llegar al tercer libro, y si queremos acceder al primer elemento
@@ -22,7 +22,7 @@ donde n es el número de libros en la pila.
 Por el contrario, podemos acceder a índices específicos en matrices con notación entre corchetes. Si queremos el tercer elemento de una matriz, podemos acceder
 a él en tiempo constante con la forma: `matriz[2]`, si alguien se pregunta porque usamos [2] simplemente porque en programación el primer elemento de una matríz es [0].
 
-## Métodos de una Pila
+## Métodos
 
 Hay tres métodos principales **(push, pop, peek)** en una pila y algunos métodos adicionales (isEmpty, getLength) para ayudar con diferentes tareas:
 
@@ -32,7 +32,7 @@ Hay tres métodos principales **(push, pop, peek)** en una pila y algunos métod
 - isEmpty() : Returns true if the stack is empty
 - getLength() : Returns the number of items in the stack
 
-## Codificando una Pila en JavaScript
+## Implementación en JavaScript
 
 Estaré codificando esta pila usando la notación de clase de JavaScript ya que estoy acostumbrado de esta manera, pero también puedes crear una pila con funciones.
 Lo primero que haremos es crear una **clase Stack** y darle un constructor con una propiedad: stack. Construiremos esta pila usando una matriz (array).
@@ -97,7 +97,7 @@ isEmpty() {
 }
 ```
 
-### Pila en Javascript:
+### Resultado:
 
 ```javascript
 class Stack {
@@ -175,4 +175,4 @@ A menudo, durante los desafíos de codificación, se te planteará una pregunta 
 Aquí hay un par de ejemplos que puede encontrar para esta pregunta. A menudo, no se espera que complete todas las partes de la pregunta o que las haga completamente
 correctas: estos desafíos son más para descubrir cómo resuelve y comunica los problemas planteados.
 
-- **Amplíe su solución para poder navegar hacia adelante y hacia atrás.**
+- **Amplíe su solución para poder navegar hacia adelante y hacia atrás.** 
