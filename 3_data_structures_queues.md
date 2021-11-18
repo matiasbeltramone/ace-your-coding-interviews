@@ -1,4 +1,4 @@
-# Colas
+# Colas (Queues)
 
 Las colas son muy similares a las pilas, sin embargo, utilizan el paradigma de "primero en entrar, primero en salir" (FIFO).
 Esto significa que el elemento más antiguo (el elemento que se agregó primero) es el siguiente elemento que se eliminará de la cola.
