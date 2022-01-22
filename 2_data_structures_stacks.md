@@ -176,3 +176,6 @@ Aquí hay un par de ejemplos que puede encontrar para esta pregunta. A menudo, n
 correctas: estos desafíos son más para descubrir cómo resuelve y comunica los problemas planteados.
 
 - **Amplíe su solución para poder navegar hacia adelante y hacia atrás.** 
+
+<p align="center">Copyright © Todos los derechos reservados a Emma Bostian</p>
+<p align="center">Adaptación realizada para la comunidad hispana</p>
