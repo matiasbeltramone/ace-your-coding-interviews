@@ -309,3 +309,6 @@ Si eso es confuso, no se preocupe; también me confundió. Ahora mismo veremos e
   }
 }
 ```
+
+<p align="center">Copyright © Todos los derechos reservados a Emma Bostian</p>
+<p align="center">Adaptación realizada al Español</p>
