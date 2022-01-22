@@ -314,6 +314,6 @@ Podemos realizar un seguimiento del índice actual con una variable de iterador.
     return currentNode;
 }
 ```
-
+<hr>
 <p align="center">Copyright © Todos los derechos reservados a Emma Bostian</p>
 <p align="center">Adaptación realizada para la comunidad hispana</p>
