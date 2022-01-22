@@ -115,5 +115,6 @@ export default class Queue {
 }
 ```
 
+<hr>
 <p align="center">Copyright © Todos los derechos reservados a Emma Bostian</p>
 <p align="center">Adaptación realizada para la comunidad hispana</p>
