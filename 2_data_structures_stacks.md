@@ -177,5 +177,7 @@ correctas: estos desafíos son más para descubrir cómo resuelve y comunica los
 
 - **Amplíe su solución para poder navegar hacia adelante y hacia atrás.** 
 
+
+<hr>
 <p align="center">Copyright © Todos los derechos reservados a Emma Bostian</p>
 <p align="center">Adaptación realizada para la comunidad hispana</p>
