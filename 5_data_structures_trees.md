@@ -148,3 +148,164 @@ addChild(value) {
   }
 }
 ```
+
+## Removing A Node
+
+Eliminar un nodo es un poco más complicado, por lo que si no lo entendemos al principio, no hay que frustrarse. Veamos las ilustraciones para ver una representación visual de la teoría que vamos a estar viendo.
+
+Al eliminar un nodo, hay cuatro casos a tener en cuenta:
+
+- No se encuentra el nodo
+- El nodo es un nodo hoja (sin hijos)
+- El nodo tiene un hijo
+- El nodo tiene dos hijos
+
+Para eliminar un nodo, debemos realizar un seguimiento del nodo padre. Si se encuentra el nodo, redirigiremos al hijo izquierdo o derecho del padre (según el nodo que queramos eliminar) a uno de los hijos (si hay hijos) que empalmará el nodo.
+
+También tendremos un booleano, encontrado (found), que hará un seguimiento de si hemos encontrado o no el nodo que queremos eliminar.
+
+Si no se encuentra el nodo, devolveremos "No se encontró el nodo".
+
+```js
+removeChild(value) {
+  let currentNode = this.root;
+  let found = false;
+  let nodeToRemove;
+  let parentNode = null;
+}
+```
+
+### Pasos a seguir:
+
+Debemos recorrer el árbol buscando el nodo que queremos eliminar.
+
+Este es un proceso similar a agregar un nodo (excepto que no estamos buscando un lugar libre, estamos buscando un valor exacto), pero el proceso de búsqueda de los subárboles izquierdo y derecho hasta que se encuentra el valor sigue siendo el mismo.
+
+Solo recuerde que antes de atravesar el subárbol izquierdo o derecho, tenemos que establecer `parentNode` igual a `currentNode` para tener un control en el padre cuando llegue el momento de eliminación.
+
+```js
+removeChild(value) {
+  let currentNode = this.root;
+  let found = false;
+  let nodeToRemove;
+  let parentNode = null;
+  
+  // Find the node we want to remove
+  while (!found) {
+    if (currentNode === null || currentNode.value === null) {
+      return "The node was not found";
+    }
+    
+    if (value === currentNode.value) {
+      nodeToRemove = currentNode;
+      found = true;
+    } else if (value < currentNode.value) {
+      parentNode = currentNode;
+      currentNode = currentNode.leftChild;
+    } else {
+      parentNode = currentNode;
+      currentNode = currentNode.rightChild;
+    }
+  }
+}
+```
+
+Una vez que hayamos encontrado el nodo, tenemos que dar cuenta de los últimos tres casos (nodo hoja, un hijo y dos hijos).
+
+### The Node Is A Leaf Node:
+
+Si el nodo que queremos eliminar es un nodo hoja (no tiene hijos), podemos establecer el hijo izquierdo o derecho de `parentNode` en nulo.
+
+Creemos una variable auxiliar adicional para legibilidad llamada `nodeToRemoveIsParentsLeftChild` que devuelve verdadero si el nodo que estamos eliminando es el hijo izquierdo y falso si el nodo que estamos eliminando es el hijo derecho.
+
+```
+  const nodeToRemoveIsParentsLeftChild = parentNode.leftChild === nodeToRemove
+  
+  // If nodeToRemove is a leaf node, remove it
+  if (nodeToRemove.leftChild === null && nodeToRemove.rightChild === null) {
+    if (nodeToRemoveIsParentsLeftChild) {
+      parentNode.leftChild = null
+    } else {
+      parentNode.rightChild = null
+    }
+  }
+```
+
+### The Node Has One Child:
+
+Si el nodo que estamos eliminando tiene un hijo, podemos redirigir el puntero del nodo principal al hijo.
+
+<p align="center"><img width="70%" src="https://user-images.githubusercontent.com/22304957/111930411-a2be3000-8a97-11eb-97fc-420e3a99ac63.png"/></p>
+
+```js
+else if (nodeToRemove.leftChild !== null && nodeToRemove.rightChild === null) {
+  // Only has a left child
+  if (nodeToRemoveIsParentsLeftChild) {
+    parentNode.leftChild = nodeToRemove.leftChild;
+  } else {
+    parentNode.rightChild = nodeToRemove.leftChild;
+  }
+} else if (nodeToRemove.rightChild !== null && nodeToRemove.leftChild === null) {
+  // Only has a right child
+  if (nodeToRemoveIsParentsLeftChild) {
+    parentNode.leftChild = nodeToRemove.rightChild;
+  } else {
+    parentNode.rightChild = nodeToRemove.rightChild;
+  }
+}
+```
+
+### The Node Has Two Children:
+
+Si el nodo que estamos eliminando tiene dos hijos, se vuelve un poco más complicado. Aquí está el algoritmo:
+
+- Establezca el puntero de `parentNode` en el subárbol derecho del nodo que estamos eliminando.
+   - Si el hijo derecho del `parentNode` apunta al nodo que estamos eliminando, establezca `parentNode.rightChild` en `nodeToDelete.rightChild`.
+   - Si el hijo izquierdo del `parentNode` apunta al nodo que estamos eliminando, establezca `parentNode.leftChild` en `nodeToDelete.rightChild`.
+
+- Atraviesa las ramas izquierdas del subárbol derecho hasta encontrar un lugar libre.
+
+- Una vez que se haya encontrado un lugar libre en el subárbol izquierdo, agregue el subárbol izquierdo de `nodeToDelete`.
+
+Si eso es confuso, no se preocupe; también me confundió. Ahora mismo veremos este concepto en forma ilustrada.
+
+<p align="center"><img width="70%" src="https://user-images.githubusercontent.com/22304957/111930674-3a238300-8a98-11eb-992c-bbf1ff413788.png"/></p>
+
+<p align="center"><img width="70%" src="https://user-images.githubusercontent.com/22304957/111930685-3d1e7380-8a98-11eb-9213-327718f57ee0.png"/></p>
+
+<p align="center"><img width="70%" src="https://user-images.githubusercontent.com/22304957/111930688-40b1fa80-8a98-11eb-808b-1aec9f9ff3f2.png"/></p>
+
+```js
+  else {
+    // Has two children
+    const rightSubTree = nodeToRemove.rightChild;
+    const leftSubTree = nodeToRemove.leftChild;
+
+    // Set parent node's respective child to the right sub tree
+    if (nodeToRemoveIsParentsLeftChild) {
+      parentNode.leftChild = rightSubTree;
+    } else {
+      parentNode.rightChild = rightSubTree;
+    }
+
+    // Find the lowest free space on the left side of the
+    // right sub tree and add the leftSubTree
+    let currLeftNode = rightSubTree;
+    let currLeftParent;
+    let foundSpace = false;
+
+    while (!foundSpace) {
+      if (currLeftNode === null) {
+        foundSpace = true;
+      } else {
+        currLeftParent = currLeftNode;
+        currLeftNode = currLeftNode.leftChild;
+      }
+    }
+
+    currLeftParent.leftChild = leftSubTree;
+
+    return "The node was successfully deleted";
+  }
+}
+```
